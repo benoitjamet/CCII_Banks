@@ -1,0 +1,96 @@
+---
+title: "Equation for Benoit 04"
+output:
+  html_document:
+    df_print: paged
+---
+
+#2) PRI
+PRI = Sum [(capital share of institutional investor i) / sum of capital shares held by the top 10 shareholders] * number of months between the PRI signature and the end of December 2020.
+
+$$ PRI = \sum_{\text{Institutional Investors} } \left[ \frac{ \text{Capital shares} }{ \sum_{\text{10 biggest shareholders} } \text{Capital shares } } \times \text{Number of months} \right]
+$$
+where the number of months are calculated between the PRI signature and the end of December 2020. 
+
+
+INIT = Sum [(capital share of institutional investor i) / sum of capital shares held by the top 10 shareholders] * number of commitments signed as of December 2020.
+$$ 
+INIT = \sum_{\text{Institutional Investors}} \left[  \frac{ \text{Capital shares} }{ \sum_{\text{10 biggest shareholders} } \text{Capital shares } } \times \text{Number of commitments} \right]
+$$
+ Where the number of commitments is calculated since December 2020.
+
+# 3 ) Bayesian model :
+The bayesian mode is written in his scaled form,  on scaled variables (written $zx$ or $z$ and the name of the original variable), to improve convergence of MCMC, and to fix non informative priors, easy to interpret, and equivalent between every variables. 
+$$ zy = \alpha_0 + \alpha_1 \cdot zx 
++ \alpha_{\mathrm{CTRL}}\cdot \mathrm{zCTRL}
+$$
+
+
+
+with 
+$$
+ zx = \frac{x - \bar{x}}{s^*_x}, \quad \forall x \in \text{ variables' set }
+$$
+
+Gives :
+$$ y =  \underset{\beta_0} {\underbrace{\left[ \bar{y}   - s^*_y \cdot \left( \alpha_0
+- \frac{\alpha_1 \cdot \bar{x}}{s^*_x} 
+- \sum \frac{\alpha_\mathrm{CTRL} \cdot  \overline{\mathrm{CTRL}}}{s^*_\mathrm{CTRL}} 
+\right)  \right] } } \\
++ x \cdot \underset{\beta_1} {\underbrace{ \frac{s^*_y}{s^*_x} } }
++ \mathrm{CTRL}\cdot \underset{\beta_\mathrm{CTRL}} {\underbrace{\frac{ s^*_y}{s^*_\mathrm{CTRL}}} }
+$$
+
+
+
+Where we recognize :
+$$
+y = \beta_0 + \beta_1 \cdot x 
++ \beta_{\mathrm{CTRL}}\cdot \mathrm{CTRL}
+$$
+
+
+
+
+
+# 4 ) Bayesian model :
+The bayesian mode is written in his scaled form,  on scaled variables (written $zx$ or $z$ and the name of the original variable), to improve convergence of MCMC, and to fix non informative priors, easy to interpret, and equivalent between every variables. 
+$$ zy = \alpha_0 + \alpha_1 \cdot zx 
++ \alpha_{SIZE}\cdot \mathrm{zSIZE}
++ \alpha_{GPS}\cdot \mathrm{zGPS} 
++ \alpha_{GFI}\cdot \mathrm{zGFI} 
+$$
+
+
+
+with 
+$$
+ zx = \frac{x - \bar{x}}{s^*_x}, \quad \forall x \in \text{ variables' set }
+$$
+
+Gives :
+$$ y =  \underset{\beta_0} {\underbrace{\left[ \bar{y}   - s^*_y \cdot \left( \alpha_0
+- \frac{\alpha_1 \cdot \bar{x}}{s^*_x} 
+- \frac{\alpha_\mathrm{SIZE} \cdot  \overline{\mathrm{SIZE}}}{s^*_\mathrm{SIZE}} 
+- \frac{\alpha_\mathrm{GPS} \cdot  \overline{\mathrm{GPS}}}{s^*_\mathrm{GPS}} 
+- \frac{\alpha_\mathrm{GFI}\cdot  \overline{\mathrm{GFI}}}{s^*_\mathrm{GFI}} 
+\right)  \right] } } \\
++ x \cdot \underset{\beta_1} {\underbrace{ \frac{s^*_y}{s^*_x} } }
++ \mathrm{SIZE}\cdot \underset{\beta_\mathrm{SIZE}} {\underbrace{\frac{ s^*_y}{s^*_\mathrm{SIZE}}} }
++ \mathrm{GPS} \cdot  \underset{\beta_\mathrm{GPS}} {\underbrace{ \frac{s^*_y}{s^*_\mathrm{GPS}} } }
++ \mathrm{GFI} \cdot \underset{\beta_\mathrm{GFI}} {\underbrace{\frac{ s^*_y}{s^*_\mathrm{GFI}} } }
+$$
+
+
+Where we recognize :
+$$
+y = \beta_0 + \beta_1 \cdot x 
++ \beta_{SIZE}\cdot \mathrm{SIZE}
++ \beta_{GPS}\cdot \mathrm{GPS} 
++ \beta_{GFI}\cdot \mathrm{GFI}
+$$
+
+
+
+
+
